@@ -1,6 +1,7 @@
 package com.comitfy.healtie.userModule.entity;
 
 
+import com.comitfy.healtie.HRModule.entity.Employee;
 import com.comitfy.healtie.util.dbUtil.BaseEntity;
 import lombok.Data;
 
@@ -34,6 +35,10 @@ public class User extends BaseEntity {
     @JoinColumn(name = "role_id")
     @OneToMany(fetch = FetchType.LAZY)
     private List<Role> roles;
+
+
+    @OneToOne(mappedBy = "employee")
+    private Employee employee;
 
     public User() {
         isEnable = false;

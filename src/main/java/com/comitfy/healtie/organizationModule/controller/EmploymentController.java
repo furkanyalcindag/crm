@@ -22,13 +22,18 @@ public class EmploymentController {
     }
 
     @PostMapping
-    public ResponseEntity<EmploymentDTO> createProject(@Valid @RequestBody EmploymentDTO projectDTO) throws IllegalAccessException {
+    public ResponseEntity<EmploymentDTO> createEmployment(@Valid @RequestBody EmploymentDTO projectDTO) throws IllegalAccessException {
         return ResponseEntity.ok(employmentServiceImp.save(projectDTO));
     }
 
     @GetMapping()
     public ResponseEntity<TPage<EmploymentDTO>> getAll(Pageable pageable) {
         return ResponseEntity.ok(employmentServiceImp.getAllPageable(pageable));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable(value = "id", required = true) Long id) {
+        return ResponseEntity.ok(employmentServiceImp.delete(id));
     }
 
 

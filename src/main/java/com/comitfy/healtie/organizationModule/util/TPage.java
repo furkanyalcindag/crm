@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 public class TPage <T>{
-    private int number; //frontEnd ile
+    private int number; //page number
     private int size; //
     private Sort sort;
     private int totalPage; //toplamsayfalama

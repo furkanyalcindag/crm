@@ -2,8 +2,10 @@ package com.comitfy.healtie.organizationModule.service.imp;
 
 import com.comitfy.healtie.organizationModule.entity.dto.DepartmentDTO;
 import com.comitfy.healtie.organizationModule.entity.dto.EmploymentDTO;
+import com.comitfy.healtie.organizationModule.entity.dto.OrganizationDTO;
 import com.comitfy.healtie.organizationModule.entity.model.Department;
 import com.comitfy.healtie.organizationModule.entity.model.Employment;
+import com.comitfy.healtie.organizationModule.entity.model.Organization;
 import com.comitfy.healtie.organizationModule.repository.DepartmentRepository;
 import com.comitfy.healtie.organizationModule.repository.EmploymentRepository;
 import com.comitfy.healtie.organizationModule.service.DepartmentService;
@@ -47,7 +49,8 @@ public class EmploymentServiceImp implements EmploymentService {
 
     @Override
     public Boolean delete(Long id) {
-        return null;
+        employmentRepository.deleteById(id);
+        return true;
     }
 
     @Override
@@ -57,6 +60,9 @@ public class EmploymentServiceImp implements EmploymentService {
 
     @Override
     public TPage<EmploymentDTO> getAllPageable(Pageable pageable) {
-        return null;
+        Page<Employment> data = employmentRepository.findAll(pageable);
+        TPage<EmploymentDTO> respnose = new TPage<EmploymentDTO>();
+        respnose.setStart(data, Arrays.asList(modelMapper.map(data.getContent(), EmploymentDTO[].class)));
+        return respnose;
     }
 }

@@ -10,10 +10,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "org_organization")
-public class Organization  {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Organization  extends BaseEntity{
 
     @Column
     private String name;

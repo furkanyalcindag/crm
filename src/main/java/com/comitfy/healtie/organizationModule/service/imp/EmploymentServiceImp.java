@@ -1,16 +1,10 @@
 package com.comitfy.healtie.organizationModule.service.imp;
 
-import com.comitfy.healtie.organizationModule.entity.dto.DepartmentDTO;
 import com.comitfy.healtie.organizationModule.entity.dto.EmploymentDTO;
-import com.comitfy.healtie.organizationModule.entity.dto.OrganizationDTO;
-import com.comitfy.healtie.organizationModule.entity.model.Department;
 import com.comitfy.healtie.organizationModule.entity.model.Employment;
-import com.comitfy.healtie.organizationModule.entity.model.Organization;
-import com.comitfy.healtie.organizationModule.repository.DepartmentRepository;
 import com.comitfy.healtie.organizationModule.repository.EmploymentRepository;
-import com.comitfy.healtie.organizationModule.service.DepartmentService;
 import com.comitfy.healtie.organizationModule.service.EmploymentService;
-import com.comitfy.healtie.organizationModule.util.TPage;
+import com.comitfy.healtie.organizationModule.util.PageDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -59,9 +53,9 @@ public class EmploymentServiceImp implements EmploymentService {
     }
 
     @Override
-    public TPage<EmploymentDTO> getAllPageable(Pageable pageable) {
+    public PageDTO<EmploymentDTO> getAllPageable(Pageable pageable) {
         Page<Employment> data = employmentRepository.findAll(pageable);
-        TPage<EmploymentDTO> respnose = new TPage<EmploymentDTO>();
+        PageDTO<EmploymentDTO> respnose = new PageDTO<EmploymentDTO>();
         respnose.setStart(data, Arrays.asList(modelMapper.map(data.getContent(), EmploymentDTO[].class)));
         return respnose;
     }

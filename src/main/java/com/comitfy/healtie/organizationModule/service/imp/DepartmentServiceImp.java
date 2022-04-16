@@ -4,7 +4,7 @@ import com.comitfy.healtie.organizationModule.entity.dto.DepartmentDTO;
 import com.comitfy.healtie.organizationModule.entity.model.Department;
 import com.comitfy.healtie.organizationModule.repository.DepartmentRepository;
 import com.comitfy.healtie.organizationModule.service.DepartmentService;
-import com.comitfy.healtie.organizationModule.util.TPage;
+import com.comitfy.healtie.organizationModule.util.PageDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -53,9 +53,9 @@ public class DepartmentServiceImp implements DepartmentService {
     }
 
     @Override
-    public TPage<DepartmentDTO> getAllPageable(Pageable pageable) {
+    public PageDTO<DepartmentDTO> getAllPageable(Pageable pageable) {
         Page<Department> data = departmentRepository.findAll(pageable);
-        TPage<DepartmentDTO> response = new TPage<>();
+        PageDTO<DepartmentDTO> response = new PageDTO<>();
         response.setStart(data, Arrays.asList(modelMapper.map(data.getContent(), DepartmentDTO[].class)));
         return response;
     }

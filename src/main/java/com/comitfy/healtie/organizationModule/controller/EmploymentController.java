@@ -3,7 +3,7 @@ package com.comitfy.healtie.organizationModule.controller;
 import com.comitfy.healtie.organizationModule.entity.dto.EmploymentDTO;
 
 import com.comitfy.healtie.organizationModule.service.imp.EmploymentServiceImp;
-import com.comitfy.healtie.organizationModule.util.TPage;
+import com.comitfy.healtie.organizationModule.util.PageDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ public class EmploymentController {
     }
 
     @GetMapping()
-    public ResponseEntity<TPage<EmploymentDTO>> getAll(Pageable pageable) {
+    public ResponseEntity<PageDTO<EmploymentDTO>> getAll(Pageable pageable) {
         return ResponseEntity.ok(employmentServiceImp.getAllPageable(pageable));
     }
 

@@ -7,7 +7,7 @@ import org.springframework.data.domain.Sort;
 import java.util.List;
 
 @Data
-public class TPage <T>{
+public class PageDTO<T>{
     private int number; //page number
     private int size; //
     private Sort sort;

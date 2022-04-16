@@ -2,7 +2,7 @@ package com.comitfy.healtie.organizationModule.controller;
 
 import com.comitfy.healtie.organizationModule.entity.dto.OrganizationDTO;
 import com.comitfy.healtie.organizationModule.service.imp.OrganizationServiceImp;
-import com.comitfy.healtie.organizationModule.util.TPage;
+import com.comitfy.healtie.organizationModule.util.PageDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ public class OrganizationController {
     }
 
     @GetMapping("pagination")
-    public ResponseEntity<TPage<OrganizationDTO>> getAll(Pageable pageable) {
+    public ResponseEntity<PageDTO<OrganizationDTO>> getAll(Pageable pageable) {
         return ResponseEntity.ok(organizationServiceImp.getAllPageable(pageable));
     }
 

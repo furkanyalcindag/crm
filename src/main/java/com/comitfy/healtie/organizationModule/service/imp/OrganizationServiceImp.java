@@ -4,7 +4,7 @@ import com.comitfy.healtie.organizationModule.entity.dto.OrganizationDTO;
 import com.comitfy.healtie.organizationModule.entity.model.Organization;
 import com.comitfy.healtie.organizationModule.repository.OrganizationRepository;
 import com.comitfy.healtie.organizationModule.service.OrganizationService;
-import com.comitfy.healtie.organizationModule.util.TPage;
+import com.comitfy.healtie.organizationModule.util.PageDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -59,9 +59,9 @@ public class OrganizationServiceImp implements OrganizationService {
     }
 
     @Override
-    public TPage<OrganizationDTO> getAllPageable(Pageable pageable) {
+    public PageDTO<OrganizationDTO> getAllPageable(Pageable pageable) {
         Page<Organization> data = organizationRepository.findAll(pageable);
-        TPage<OrganizationDTO> respnose = new TPage<OrganizationDTO>();
+        PageDTO<OrganizationDTO> respnose = new PageDTO<OrganizationDTO>();
         respnose.setStart(data, Arrays.asList(modelMapper.map(data.getContent(), OrganizationDTO[].class)));
         return respnose;
     }
